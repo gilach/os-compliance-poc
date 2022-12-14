@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: 'Run Repolinter'
-        uses: newrelic/repolinter-action@v1
+        uses: newrelic/repolinter-action@v1.5.1
         with:
           config_file: 'repolinter.yml'
           output_type: issue
