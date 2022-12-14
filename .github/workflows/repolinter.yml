@@ -14,7 +14,7 @@ jobs:
       - name: 'Run Repolinter'
         uses: todogroup/repolinter-action@v1
         with:
-          config_file: 'repolinter.yml'
+          config_file: 'repolinter.json'
           output_type: issue
           output_name: 'Open Source Repository Guidelines issues'
           label_name: 'repolinter'
