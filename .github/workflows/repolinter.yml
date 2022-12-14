@@ -1,16 +1,21 @@
-name: Lint repository
-on: [push]
+name: 'Validate master branch with Repolinter'
+
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  repo-lint:
-    name: "repolinter"
+  repolinter-action:
     runs-on: ubuntu-latest
     steps:
-      - name: "checkout repo"
-        uses: actions/checkout@v2.0.0
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: 'Run Repolinter'
+        uses: newrelic/repolinter-action@v1
         with:
-          fetch-depth: 0
-      - name: Test repolinter
-        uses: philips-labs/github-action-repolinter@master
-        env:
-          CUSTOM_REPOLINT_FILE: repolinter.json
+          config_file: 'repolinter.yml'
+          output_type: issue
+          output_name: 'Open Source Repository Guidelines issues'
+          label_name: 'repolinter'
+          label_color: '00ffff'
